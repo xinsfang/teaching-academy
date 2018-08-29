@@ -76,7 +76,17 @@
 			<id>nexus-snapshots</id>
 			<url>http://localhost:8081/repository/maven-snapshots/</url>
 		</snapshotRepository>		
+		<repository>
+			<id>nexus-release</id>
+			<url>http://localhost:8081/repository/maven-releases/</url>
+		</repository>
 	</distributionManagement>
+
+	<scm>
+		<connection>scm:git:git@github.com:xinsfang/teaching-academy.git</connection>
+		<developerConnection>scm:git:git@github.com:xinsfang/teaching-academy.git</developerConnection>
+		<url>https://github.com/xinsfang/teaching-academy/tree/master</url>
+	</scm>
 
 	<build>
 		<pluginManagement>
@@ -109,6 +119,15 @@
 							<version>2.6</version>
 						</dependency>
 					</dependencies>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-release-plugin</artifactId>
+					<version>2.5.3</version>
+					<configuration>
+						<tagNameFormat>v@{project.version}</tagNameFormat>
+						<autoVersionSubmodules>true</autoVersionSubmodules>
+					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
